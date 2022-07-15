@@ -957,22 +957,13 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.28756985
+        value: 0.4836453
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0.5163399
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1167,7 +1158,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547709526}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a29cdf04243e7274d8fc517ffd5a0e7c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -2353,6 +2344,9 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
+  minSpeed: 10
+  maxSpeed: 800
+  speedMultiplier: 100
 --- !u!54 &1816610494
 Rigidbody:
   m_ObjectHideFlags: 0
