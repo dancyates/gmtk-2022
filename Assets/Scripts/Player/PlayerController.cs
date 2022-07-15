@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody>();
+        _lineRenderer.enabled = false;
     }
 
     private void Update()
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
             {
-                _lineRenderer.SetPosition(1, raycastHit.point);
+                _lineRenderer.SetPosition(1, GroundedVector(raycastHit.point));
             }
         }
 
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GroundedVector(Vector3 v)
     {
-        // Set vector to ground by zeroing the Z axis
-        return new Vector3(v.x, 0f, v.z);
+        // Set vector to ground by zeroing (ish) the Z axis
+        return new Vector3(v.x, 0.25f, v.z);
     }
 }
