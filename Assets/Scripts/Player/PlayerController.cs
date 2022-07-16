@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
             // Shoot self in direction at speed, clamped between min and max
             var speed = Math.Clamp(direction.magnitude * speedMultiplier, minSpeed, maxSpeed);
-            _rigidbody.AddForce(direction.normalized * speed);
+            _rigidbody.AddForce(direction.normalized * -1f * speed);
 
             // Hide the line renderer
             _lineRenderer.enabled = false;

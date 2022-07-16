@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         if (other.CompareTag("Prop"))
         {
             AddScore(other.gameObject.GetComponent<Prop>().points);
-            Destroy(other.gameObject);
+            Destroy(other.gameObject, 2f);
         }
     }
 
