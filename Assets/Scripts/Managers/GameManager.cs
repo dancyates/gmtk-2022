@@ -5,13 +5,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject gameOverScreen; 
+    private UIManager _UIManager;
+
+    private void Awake()
+    {
+        _UIManager = GameObject.FindObjectOfType<UIManager>();
+    }
+
+    private void Start()
+    {
+        _UIManager.ShowGameOverScreen(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            gameOverScreen.SetActive(true);
+            _UIManager.ShowGameOverScreen(true);
         }
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Hello :)");
     }
 }
