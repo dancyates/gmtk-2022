@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _UIManager.ShowGameOverScreen(true);
+            LoseGame();
         }
 
         var prop = other.gameObject.GetComponent<Prop>();
@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
         _UIManager.ShowGameOverScreen(false);  // Hide game over UI
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart current level
         ResetScore();
+    }
+
+    public void LoseGame()
+    {
+        _UIManager.ShowGameOverScreen(true);
     }
 
     // Score stuff

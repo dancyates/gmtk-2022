@@ -1587,7 +1587,7 @@ MonoBehaviour:
   minSpeed: 10
   maxSpeed: 3500
   speedMultiplier: 800
-  velocityReductionOnHitScalar: 3
+  velocityReductionOnHitScalar: 2
 --- !u!54 &7033046151794180877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2180,7 +2180,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8350358782908313682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
