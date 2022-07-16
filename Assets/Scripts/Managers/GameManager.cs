@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("Hello :)");
+        _UIManager.ShowGameOverScreen(false);  // Hide game over UI
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart current level
     }
 }
