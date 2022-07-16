@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GroundedVector(Vector3 v)
     {
-        // Set vector to ground by zeroing (ish) the Z axis
-        return new Vector3(v.x, 0.25f, v.z);
+        // Set vector to ground by zeroing (ish) the Y axis (player grounded position)
+        return new Vector3(v.x, transform.position.y, v.z);
     }
 }
