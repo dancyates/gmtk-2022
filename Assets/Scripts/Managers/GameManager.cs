@@ -27,9 +27,10 @@ public class GameManager : MonoBehaviour
             _UIManager.ShowGameOverScreen(true);
         }
 
-        if (other.CompareTag("Prop"))
+        var prop = other.gameObject.GetComponent<Prop>();
+        if (prop)
         {
-            AddScore(other.gameObject.GetComponent<Prop>().points);
+            AddScore(prop.points);
             Destroy(other.gameObject, 2f);
         }
     }
