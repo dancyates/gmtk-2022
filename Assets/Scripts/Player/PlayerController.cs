@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedMultiplier;
+    [SerializeField] private float velocityReductionOnHitScalar;
 
     private Camera _camera;
     private Rigidbody _rigidbody;
@@ -56,6 +57,14 @@ public class PlayerController : MonoBehaviour
 
             // Hide the line renderer
             _lineRenderer.enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<Prop>())
+        {
+            _rigidbody.velocity /= velocityReductionOnHitScalar;
         }
     }
 

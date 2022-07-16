@@ -35,6 +35,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayGame()
+    {
+        _UIManager.ShowGameOverScreen(false);  // Hide game over UI
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  // Start next level
+        ResetScore();
+    }
+    
     public void RestartGame()
     {
         _UIManager.ShowGameOverScreen(false);  // Hide game over UI
