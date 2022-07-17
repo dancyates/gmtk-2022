@@ -6,10 +6,16 @@ using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private float waitTimeBeforeStarting;
+
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private float minFrequency;
     [SerializeField] private float maxFrequency;
-    [SerializeField] private float waitTimeBeforeStarting;
+    
+    [SerializeField] private GameObject armSwipe;
+    [SerializeField] private float armSwipeMinFrequency;
+    [SerializeField] private float armSwipeMaxFrequency;
+    [SerializeField] private List<Transform> armSwipeSpawnPoints;
 
     private GameManager _gameManager;
     private BoxCollider _boxCollider;
@@ -25,6 +31,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnerCoroutine());
+        StartCoroutine(SpawnArmSwipeCoroutine());
     }
 
     IEnumerator SpawnerCoroutine()
@@ -41,8 +48,6 @@ public class EnemyManager : MonoBehaviour
 
             var timeToWait = Random.Range(minFrequency - amountToSubtract, maxFrequency - amountToSubtract);
             var clampedTimeToWait = Math.Clamp(timeToWait, 0.2f, 5f);
-            
-            Debug.Log($"Time to wait: {clampedTimeToWait}");
 
             SpawnRandomEnemyInRandomPosition();
             yield return new WaitForSeconds(clampedTimeToWait);
@@ -68,5 +73,22 @@ public class EnemyManager : MonoBehaviour
             Random.Range(bounds.min.y, bounds.max.y),
             Random.Range(bounds.min.z, bounds.max.z)
         );
+    }
+
+    IEnumerator SpawnArmSwipeCoroutine()
+    {
+        // Wait for x seconds initially before kicking off the madness
+        yield return new WaitForSeconds(waitTimeBeforeStarting);
+
+        while (!_gameManager.isGameOver)
+        {
+            // Wait random amount of time before spawning arm swipe
+            yield return new WaitForSeconds(Random.Range(armSwipeMinFrequency, armSwipeMaxFrequency));
+        
+            // Get random spawn point
+            var i = Random.Range(0, armSwipeSpawnPoints.Count - 1);
+            var spawnPoint = armSwipeSpawnPoints[i];
+            var arm = Instantiate(armSwipe, spawnPoint);   
+        }
     }
 }
