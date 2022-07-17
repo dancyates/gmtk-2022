@@ -2831,6 +2831,8 @@ MonoBehaviour:
   gameOverScreen: {fileID: 351950841}
   scoreText: {fileID: 1125131633}
   scoreTextAnimator: {fileID: 1125131632}
+  tutorialScreen1: {fileID: 0}
+  tutorialScreen2: {fileID: 0}
 --- !u!1 &1466370109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,7 +3554,7 @@ PrefabInstance:
     - target: {fileID: 3546129361301789020, guid: c77d9ef1ebff68442b663d3e992b9d3d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonMainMenuPlayGame
+      value: ButtonMainMenuTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 3546129361761588481, guid: c77d9ef1ebff68442b663d3e992b9d3d,
         type: 3}

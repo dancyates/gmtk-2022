@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private Animator scoreTextAnimator;
+    [SerializeField] private GameObject tutorialScreen1;
+    [SerializeField] private GameObject tutorialScreen2;
 
     private GameManager _gameManager;
     private readonly int PlayBounceTrigger = Animator.StringToHash("PlayBounceTrigger");
@@ -34,7 +36,14 @@ public class UIManager : MonoBehaviour
 
     public void ButtonMainMenuPlayGame()
     {
+        tutorialScreen1.SetActive(false);
+        tutorialScreen2.SetActive(false);
         _gameManager.PlayGame();
+    }
+
+    public void ButtonMainMenuTutorial()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ButtonMainMenuQuitGame()
@@ -56,5 +65,11 @@ public class UIManager : MonoBehaviour
             scoreTextAnimator.SetTrigger(PlayBounceTrigger);
         }
         scoreText.text = _gameManager.playerScore.ToString();
+    }
+
+    public void ButtonNextTutorialScreen1()
+    {
+        tutorialScreen1.SetActive(false);
+        tutorialScreen2.SetActive(true);
     }
 }
