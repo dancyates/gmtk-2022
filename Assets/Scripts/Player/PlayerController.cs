@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedMultiplier;
     [SerializeField] private float velocityReductionOnHitScalar;
+    [SerializeField] private float velocityBeforeBeingAbleToShootAgain = 0.03f;
 
     private Camera _camera;
     private Rigidbody _rigidbody;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_rigidbody.velocity.magnitude > 0.03f) return;  // return if currently moving
+        if (_rigidbody.velocity.magnitude > velocityBeforeBeingAbleToShootAgain) return;  // return if currently moving
 
         if (Input.GetMouseButton(0))
         {

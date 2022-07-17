@@ -3318,6 +3318,11 @@ PrefabInstance:
       propertyPath: velocityReductionOnHitScalar
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7033046151794180878, guid: b4541a442036b46469d2bcc0ede2201b,
+        type: 3}
+      propertyPath: velocityBeforeBeingAbleToShootAgain
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7033046151794180879, guid: b4541a442036b46469d2bcc0ede2201b,
         type: 3}
       propertyPath: m_RootOrder
