@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _enemies;
 
     private GameManager _gameManager;
-
     private BoxCollider _boxCollider;
+    private int numberSpawned;
 
     private void Awake()
     {
@@ -30,8 +32,10 @@ public class EnemyManager : MonoBehaviour
         // Spawn enemies forever
         while (!_gameManager.isGameOver)
         {
+            numberSpawned++;
+            Debug.Log($"Spawned: {numberSpawned}");
             SpawnRandomEnemyInRandomPosition();
-            yield return new WaitForSeconds(1f);   
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -39,7 +43,8 @@ public class EnemyManager : MonoBehaviour
     {
         // Spawn random enemy from list, in bounds
         var i = Random.Range(0, _enemies.Count - 1);
-        var enemy = Instantiate(_enemies[i], RandomPositionInBounds(_boxCollider.bounds), Quaternion.identity);
+        var rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        var enemy = Instantiate(_enemies[i], RandomPositionInBounds(_boxCollider.bounds), rotation);
         
         // Destroy enemy after animation is complete
         Destroy(enemy, enemy.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
