@@ -551,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: 0
+  isGameOver: 0
 --- !u!1 &309663789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,6 +1693,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies:
+  - {fileID: 895282002714693857, guid: 642d57262d47059469a83ca1107acb24, type: 3}
+  - {fileID: 895282002714693857, guid: 47335651f5cc6de4e8c2a1714e27b89f, type: 3}
+  - {fileID: 895282002714693857, guid: da4a19a59061b04418a55777ba5d8d90, type: 3}
+  - {fileID: 895282002714693857, guid: 8cbd658b6c3a6ea4cb95873709c482b5, type: 3}
+  - {fileID: 895282002714693857, guid: 4ff93bed28797fb41855a858f361a430, type: 3}
+  - {fileID: 895282002714693857, guid: 53c6dcc5d430efe4b9a9bb26dc4e3d19, type: 3}
   - {fileID: 895282002714693857, guid: e02b2957cfb433345acc48166c767b68, type: 3}
 --- !u!114 &953652485 stripped
 MonoBehaviour:
