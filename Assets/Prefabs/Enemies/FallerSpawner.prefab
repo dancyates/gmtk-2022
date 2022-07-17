@@ -59,4 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallers:
-  - {fileID: 4546587681691988568, guid: 73aa9fcc2f8cec04ba722e11b3bcbc63, type: 3}
+  - {fileID: 4481592592435893164, guid: 1cc37e24fbb002c4abeb68fac3edbd54, type: 3}
+  - {fileID: 1505629229962573693, guid: ed477aa5825c9c440a87effe9501638b, type: 3}
+  - {fileID: 9120417585707936407, guid: 7e1f234c40c62244386a27c45c13c8e6, type: 3}
+  - {fileID: 5128723712284378741, guid: 3930ea86440ea0a48a2cc7c60f3cbb2b, type: 3}
+  - {fileID: 4409686314123718938, guid: f655eb3c03996314d8f0542e5b3f9e93, type: 3}
+  minSpawnTime: 10
+  maxSpawnTime: 20

@@ -8,24 +8,39 @@ public class FallerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _fallers;
 
+    [SerializeField] private float minSpawnTime = 1f;
+    [SerializeField] private float maxSpawnTime = 3f;
+    
+    private GameManager _gameManager;
     private BoxCollider _boxCollider;
 
     private void Awake()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
     {
-        // Repeatedly spawn enemies
-        InvokeRepeating(nameof(SpawnRandomFallerInRandomPosition), 0f, 0.5f);
-        // CancelInvoke(nameof(SpawnRandomFallerInRandomPosition));
+        StartCoroutine(SpawnerCoroutine());
+    }
+
+    IEnumerator SpawnerCoroutine()
+    {
+        // Spawn fallers forever
+        while (!_gameManager.isGameOver)
+        {
+            var timeToWait = Random.Range(minSpawnTime, maxSpawnTime);
+
+            SpawnRandomFallerInRandomPosition();
+            yield return new WaitForSeconds(timeToWait);
+        }
     }
 
     private void SpawnRandomFallerInRandomPosition()
     {
         var i = Random.Range(0, _fallers.Count);
-        Instantiate(_fallers[i], RandomPositionInBounds(_boxCollider.bounds), Quaternion.identity);
+        Instantiate(_fallers[i], RandomPositionInBounds(_boxCollider.bounds), Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));
     }
 
     private Vector3 RandomPositionInBounds(Bounds bounds)

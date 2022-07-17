@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private float minFrequency;
     [SerializeField] private float maxFrequency;
+    [SerializeField] private float waitTimeBeforeStarting;
 
     private GameManager _gameManager;
     private BoxCollider _boxCollider;
@@ -23,15 +24,14 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        // Repeatedly spawn enemies
-        // InvokeRepeating(nameof(SpawnRandomEnemyInRandomPosition), 2f, 2f);
-        // CancelInvoke(nameof(SpawnRandomFallerInRandomPosition));
-
         StartCoroutine(SpawnerCoroutine());
     }
 
     IEnumerator SpawnerCoroutine()
     {
+        // Wait for x seconds initially before kicking off the madness
+        yield return new WaitForSeconds(waitTimeBeforeStarting);
+        
         // Spawn enemies forever
         while (!_gameManager.isGameOver)
         {
@@ -40,7 +40,9 @@ public class EnemyManager : MonoBehaviour
             var amountToSubtract = (numberSpawned / 5f) * 0.1f;
 
             var timeToWait = Random.Range(minFrequency - amountToSubtract, maxFrequency - amountToSubtract);
-            var clampedTimeToWait = Math.Clamp(timeToWait, 0.2f, 2f);
+            var clampedTimeToWait = Math.Clamp(timeToWait, 0.2f, 5f);
+            
+            Debug.Log($"Time to wait: {clampedTimeToWait}");
 
             SpawnRandomEnemyInRandomPosition();
             yield return new WaitForSeconds(clampedTimeToWait);
