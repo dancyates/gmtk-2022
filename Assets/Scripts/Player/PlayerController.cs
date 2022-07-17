@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private AudioSource _audioSource;
 
     [Header("Speed")] 
     [SerializeField] private float minSpeed;
@@ -63,11 +64,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Bonk");
-        
         var prop = other.gameObject.GetComponent<Prop>();
         if (prop)
         {
+            if (_rigidbody.velocity.magnitude >= 0.5f)
+            {
+                _audioSource.Play();
+            }
+            
             _rigidbody.velocity /= velocityReductionOnHitScalar;
             prop.points = prop.pointsDefault;  // Reset points if you've hit a prop that an enemy previously hit
         }

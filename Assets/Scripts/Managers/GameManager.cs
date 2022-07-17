@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public int playerScore;
     public bool isGameOver = false;
+
+    [SerializeField] private AudioSource addPointsAudioSource;
+    [SerializeField] private AudioSource loseGameAudioSource;
     
     private UIManager _UIManager;
 
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         if (prop)
         {
             AddScore(prop.points);
+            addPointsAudioSource.Play();
             Destroy(other.gameObject, 2f);
         }
     }
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         _UIManager.ShowGameOverScreen(true);
+        loseGameAudioSource.Play();
         FindObjectOfType<PlayerController>().enabled = false;  // Disable player controls
         isGameOver = true;
     }
