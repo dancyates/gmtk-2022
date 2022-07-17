@@ -6,18 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private UIManager _UIManager;
     public int playerScore;
+    public bool isGameOver = false;
+    
+    private UIManager _UIManager;
 
     private void Awake()
     {
         _UIManager = GameObject.FindObjectOfType<UIManager>();
-        ResetScore();
+        ResetScoreAndIsGameOverAndEnableControls();
     }
 
     private void Start()
     {
         _UIManager.ShowGameOverScreen(false);
+        isGameOver = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,25 +42,29 @@ public class GameManager : MonoBehaviour
     {
         _UIManager.ShowGameOverScreen(false);  // Hide game over UI
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  // Start next level
-        ResetScore();
+        ResetScoreAndIsGameOverAndEnableControls();
     }
     
     public void RestartGame()
     {
         _UIManager.ShowGameOverScreen(false);  // Hide game over UI
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart current level
-        ResetScore();
+        ResetScoreAndIsGameOverAndEnableControls();
     }
 
     public void LoseGame()
     {
         _UIManager.ShowGameOverScreen(true);
+        FindObjectOfType<PlayerController>().enabled = false;  // Disable player controls
+        isGameOver = true;
     }
 
     // Score stuff
-    private void ResetScore()
+    private void ResetScoreAndIsGameOverAndEnableControls()
     {
         playerScore = 0;
+        isGameOver = false;
+        FindObjectOfType<PlayerController>().enabled = true;  // Enable player controls
     }
 
     private void AddScore(int amountToAdd)

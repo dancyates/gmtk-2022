@@ -6,10 +6,13 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _enemies;
 
+    private GameManager _gameManager;
+
     private BoxCollider _boxCollider;
 
     private void Awake()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _boxCollider = GetComponent<BoxCollider>();
     }
 
@@ -25,7 +28,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator SpawnerCoroutine()
     {
         // Spawn enemies forever
-        while (true)
+        while (!_gameManager.isGameOver)
         {
             SpawnRandomEnemyInRandomPosition();
             yield return new WaitForSeconds(1f);   
