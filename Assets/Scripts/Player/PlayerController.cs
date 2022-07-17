@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("Bonk");
+        
         var prop = other.gameObject.GetComponent<Prop>();
         if (prop)
         {
