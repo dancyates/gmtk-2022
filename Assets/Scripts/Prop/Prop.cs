@@ -5,4 +5,5 @@ using UnityEngine;
 public class Prop : MonoBehaviour
 {
     public int points = 10;
+    public int pointsDefault = 10;
 }

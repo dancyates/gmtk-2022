@@ -63,9 +63,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<Prop>())
+        var prop = other.gameObject.GetComponent<Prop>();
+        if (prop)
         {
             _rigidbody.velocity /= velocityReductionOnHitScalar;
+            prop.points = prop.pointsDefault;  // Reset points if you've hit a prop that an enemy previously hit
         }
     }
 
