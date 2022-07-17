@@ -16,8 +16,20 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         // Repeatedly spawn enemies
-        InvokeRepeating(nameof(SpawnRandomEnemyInRandomPosition), 2f, 2f);
+        // InvokeRepeating(nameof(SpawnRandomEnemyInRandomPosition), 2f, 2f);
         // CancelInvoke(nameof(SpawnRandomFallerInRandomPosition));
+
+        StartCoroutine(SpawnerCoroutine());
+    }
+
+    IEnumerator SpawnerCoroutine()
+    {
+        // Spawn enemies forever
+        while (true)
+        {
+            SpawnRandomEnemyInRandomPosition();
+            yield return new WaitForSeconds(1f);   
+        }
     }
 
     private void SpawnRandomEnemyInRandomPosition()
