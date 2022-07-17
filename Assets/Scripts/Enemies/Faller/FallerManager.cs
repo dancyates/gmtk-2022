@@ -31,9 +31,9 @@ public class FallerManager : MonoBehaviour
         while (!_gameManager.isGameOver)
         {
             var timeToWait = Random.Range(minSpawnTime, maxSpawnTime);
+            yield return new WaitForSeconds(timeToWait);
 
             SpawnRandomFallerInRandomPosition();
-            yield return new WaitForSeconds(timeToWait);
         }
     }
 
