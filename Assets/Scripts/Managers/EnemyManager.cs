@@ -7,10 +7,13 @@ using Random = UnityEngine.Random;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private float minFrequency;
+    [SerializeField] private float maxFrequency;
 
     private GameManager _gameManager;
     private BoxCollider _boxCollider;
     private int numberSpawned;
+    
 
     private void Awake()
     {
@@ -33,9 +36,14 @@ public class EnemyManager : MonoBehaviour
         while (!_gameManager.isGameOver)
         {
             numberSpawned++;
-            Debug.Log($"Spawned: {numberSpawned}");
+
+            var amountToSubtract = (numberSpawned / 5f) * 0.1f;
+
+            var timeToWait = Random.Range(minFrequency - amountToSubtract, maxFrequency - amountToSubtract);
+            var clampedTimeToWait = Math.Clamp(timeToWait, 0.2f, 2f);
+
             SpawnRandomEnemyInRandomPosition();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(clampedTimeToWait);
         }
     }
 
