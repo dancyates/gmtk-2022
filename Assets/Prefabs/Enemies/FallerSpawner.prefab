@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &598424959704189147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598424959704189146}
+  - component: {fileID: 598424959704189145}
+  - component: {fileID: 598424959704189144}
+  m_Layer: 0
+  m_Name: FallerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598424959704189146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598424959704189147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &598424959704189145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598424959704189147}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30, y: 9.9, z: 30}
+  m_Center: {x: 0, y: 22, z: 0}
+--- !u!114 &598424959704189144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598424959704189147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a82eac2efdb0e84da4ca48fb088f283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fallers:
+  - {fileID: 4481592592435893164, guid: 1cc37e24fbb002c4abeb68fac3edbd54, type: 3}
+  - {fileID: 1505629229962573693, guid: ed477aa5825c9c440a87effe9501638b, type: 3}
+  - {fileID: 9120417585707936407, guid: 7e1f234c40c62244386a27c45c13c8e6, type: 3}
+  - {fileID: 5128723712284378741, guid: 3930ea86440ea0a48a2cc7c60f3cbb2b, type: 3}
+  - {fileID: 4409686314123718938, guid: f655eb3c03996314d8f0542e5b3f9e93, type: 3}
+  - {fileID: 3082636677288797256, guid: 9695d064d4c445c4fac4e743e7b6603b, type: 3}
+  - {fileID: 5763087109918910597, guid: 8d6c65e76b9acdf45992173900225ad6, type: 3}
+  - {fileID: 872903708172028129, guid: aa05cac5d0b8b67469c27ecb79d5344c, type: 3}
+  minSpawnTime: 5
+  maxSpawnTime: 10
